@@ -14,12 +14,16 @@ import projetpoo.Joueur;
  * @author ap775722
  */
 public class JaugeVie extends Afficheurs {
+    private Joueur j;
 
-    public JaugeVie(Game g, String nom, double _x, double _y) {
+    public JaugeVie(Game g, String nom, int _x, int _y, Joueur joueur) {
         super(g, nom, _x, _y);
+        this.j = joueur;
     }
     
+    @Override
     public void move(long dt){
+        
     }
     
 }

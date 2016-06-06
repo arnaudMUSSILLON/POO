@@ -20,7 +20,11 @@ public class AsteroideMoyen extends Asteroide {
 
     @Override
     protected void Split() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.Detruit();
+        PetitAsteroide a2 = new PetitAsteroide (game(), "asteroide1",this.getLeft(),this.getTop()+200);
+        PetitAsteroide a3 = new PetitAsteroide (game(), "asteroide1",this.getLeft(),this.getTop()-200);
+        game().add(a2);
+        game().add(a3);
     }
     
 }

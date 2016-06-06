@@ -22,12 +22,12 @@ public abstract class BonusMalus extends iut.ObjetTouchable {
 
     @Override
     public boolean isEnnemy() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isFriend() {
-        return false;
+        return true;
     }
     
     public Joueur getJoueur(){

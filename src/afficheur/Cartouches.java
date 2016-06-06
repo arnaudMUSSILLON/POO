@@ -6,17 +6,32 @@
 
 package afficheur;
 
-import projetpoo.Joueur;
+import iut.Game;
+import java.util.ArrayList;
 import projetpoo.Joueur;
 
 /**
  *
  * @author ap775722
  */
-public class Cartouches {
+public class Cartouches extends Afficheurs {
+
+    private static ArrayList<Cartouches> cartouches = new ArrayList();
+    private Joueur j;
+    private Game jeu;
     
-    public void move(long dt){
+    public Cartouches(Game g) {
+        super(g, "missile", cartouches.size()*10, 20);
+        cartouches.add(this);
+        g.add(this);
     }
-    public Cartouches(Joueur j){
+       
+    @Override
+    public void move(long dt){
+        //inutile pour l'affichage
+    }
+   
+    public ArrayList<Cartouches> getCartouches(){
+        return cartouches;
     }
 }

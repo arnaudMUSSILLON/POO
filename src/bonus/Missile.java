@@ -15,18 +15,23 @@ import projetpoo.Joueur;
  */
 public class Missile extends BonusMalus{
 
+    private double vitesseX = 20;
     public Missile(Game g, String nom, int x, int y, Joueur j) {
         super(g, nom, x, y,j);                        // nom = "missile"
     }
 
     @Override
     public void effect(Objet objet) {
-        
+        if(objet.isEnnemy()){
+            game().remove(this);            
+        }
     }
 
     @Override
     public void move(long l) {
-        
+        {
+            this.moveX (this.vitesseX);
+        }
     }
     
 }

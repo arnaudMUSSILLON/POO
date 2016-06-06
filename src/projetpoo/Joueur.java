@@ -6,7 +6,9 @@
 
 package projetpoo;
 
+import afficheur.Cartouches;
 import bonus.BonusMalus;
+import bonus.Missile;
 import iut.Objet;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -23,13 +25,18 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     private double vitesse;
     private String nom =null;
     private boolean bloque;
-    private ArrayList<BonusMalus> bonus;
+    private ArrayList<BonusMalus> bonus = new ArrayList();
 
     public Joueur(iut.Game jeu, String nom, int x, int y){
         super(jeu,nom, x,y);
         this.vitesse = 1;
         this.bloque = false;
-  
+        for (int i=0; i<=3; i++){
+            if(vie>=i){
+                Cartouches cartouche = new Cartouches(this.game());
+                //jeu.add(cartouche);
+            }
+        }
     }
 
     
@@ -50,12 +57,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     
     @Override
     public boolean isFriend(){
-        return false;
+        return true;
     }
     
     @Override
     public boolean isEnnemy(){
-        return true;
+        return false;
     }
     
     @Override
@@ -79,16 +86,19 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         
     }
     
+
+    
     public static int getVie(){
         return vie;
     }
-
     
     
     
     @Override
-    public void mouseClicked(MouseEvent e) {
-        //non utilisé ici
+    public void mouseClicked(MouseEvent e) {           
+        Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ,this) ;
+        this.game().add(m1);
+        
     }
 
     @Override

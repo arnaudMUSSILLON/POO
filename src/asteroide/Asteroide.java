@@ -7,6 +7,7 @@
 package asteroide;
 
 import iut.Game;
+import iut.Objet;
 import projetpoo.Ennemi;
 
 /**
@@ -21,8 +22,10 @@ public abstract class Asteroide extends Ennemi{
 
     @Override
     protected void specialMove(long dt) {
-    
-    
+    move(dt);
+    if (this.getLeft() < 0) {
+        game().remove(this);
+    }
     }
 
     @Override
@@ -32,12 +35,22 @@ public abstract class Asteroide extends Ennemi{
     
     @Override
     protected void Detruit(){
-        
+        game().remove(this);
+    }
+    
+    public void effect(Objet o){
+        if(o.isFriend()) 
+        {
+            
+            this.Detruit();
+            this.Split();
+            
+        }
     }
     
     protected abstract void Split();
     
-
+    
     
 }
 

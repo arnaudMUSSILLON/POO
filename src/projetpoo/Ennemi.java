@@ -21,31 +21,34 @@ public abstract class Ennemi extends ObjetTouchable{
 
     public Ennemi(Game g, String nom, int x, int y) {
         super(g, nom, x, y);
-        this.vitesseX=1;
+        this.vitesseX=-0.10;
         this.vitesseY=0;
     }
     
 
     
     public void effect(Objet o){
-      /*  if (o.isFriend())
+        if (o.isFriend())
         {
-            
-        }*/
+            this.Detruit();
+        }
     }
     
+    @Override
     public boolean isFriend(){
         return false;
         
     }
     
+    @Override
     public boolean isEnnemy(){
         return true;
     }
     
+    @Override
     public void move(long dt){
-        
-        
+        move(dt*vitesseX,dt*vitesseY);
+                
     }
     
     protected abstract void specialMove(long dt);

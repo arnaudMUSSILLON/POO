@@ -20,7 +20,7 @@ public class PetitAsteroide extends Asteroide {
 
     @Override
     protected void Split() {
-        
+        this.Detruit();
     }
     
 }
