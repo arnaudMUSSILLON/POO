@@ -23,8 +23,8 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     private String nom =null;
     private boolean bloque;
 
-    public Joueur(iut.Game jeu){
-        super(jeu,"vaisseau", 100, 500);
+    public Joueur(iut.Game jeu, int x, int y){
+        super(jeu,"vaisseau", x,y);
         this.vie = 3;
         this.vitesse = 1;
         this.bloque = false;
@@ -87,37 +87,37 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+        //non utilisé ici
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //non utilisé ici
     }
 
 

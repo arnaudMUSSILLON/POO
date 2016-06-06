@@ -31,7 +31,7 @@ public class Jeu extends iut.Game{
     
     @Override
     public void createObjects(){
-        Joueur joueur = new Joueur(this);
+        Joueur joueur = new Joueur(this, 20, 100);
         this.add(joueur);
         this.addMouseInteractiveObject(joueur);
         
