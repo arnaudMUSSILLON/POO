@@ -6,11 +6,17 @@
 
 package asteroide;
 
+import iut.Game;
+
 /**
  *
  * @author cp071232
  */
 public class PetitAsteroide extends Asteroide {
+
+    public PetitAsteroide(Game g, String nom, int x, int y) {
+        super(g, nom, x, y);
+    }
 
     @Override
     protected void Split() {

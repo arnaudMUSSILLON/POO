@@ -6,15 +6,18 @@
 package bonus;
 
 import iut.Game;
+import projetpoo.Joueur;
 
 /**
  *
  * @author Arno
  */
 public abstract class BonusMalus extends iut.ObjetTouchable {
+    private Joueur j;
     
-    public BonusMalus(Game g, String nom, int x, int y) {
+    public BonusMalus(Game g, String nom, int x, int y, Joueur joueur) {
         super(g, nom, x, y);
+        j = joueur;
     }
 
     @Override
@@ -25,5 +28,9 @@ public abstract class BonusMalus extends iut.ObjetTouchable {
     @Override
     public boolean isFriend() {
         return false;
+    }
+    
+    public Joueur getJoueur(){
+        return j;
     }
 }

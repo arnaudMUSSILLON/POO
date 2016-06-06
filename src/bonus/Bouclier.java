@@ -7,6 +7,7 @@ package bonus;
 
 import iut.Game;
 import iut.Objet;
+import projetpoo.Joueur;
 
 /**
  *
@@ -17,8 +18,8 @@ public class Bouclier extends BonusMalus{
     private int duree;
     private int energie;
 
-    public Bouclier(Game g, int x, int y) {
-        super(g, "bouclier", x, y);
+    public Bouclier(Game g,String nom, int x, int y,Joueur j) {
+        super(g, nom, x, y,j);                                //nom = "bouclier"
         duree = 20;
         energie = 500;
     }
@@ -27,6 +28,9 @@ public class Bouclier extends BonusMalus{
     public void effect(Objet o) {
         if (o.isEnnemy()){
             energie -= 300;
+            if (energie <=0){
+                getJoueur().enleveBonus(this);
+            }
         }
     }
 

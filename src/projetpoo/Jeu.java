@@ -6,6 +6,7 @@
 
 package projetpoo;
 
+import asteroide.GrandAsteroide;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
@@ -31,7 +32,9 @@ public class Jeu extends iut.Game{
     
     @Override
     public void createObjects(){
-        Joueur joueur = new Joueur(this, 20, 100);
+        GrandAsteroide a1 = new GrandAsteroide (this , "asteroide1" , 700, 100) ;
+        this.add(a1);
+        Joueur joueur = new Joueur(this,"vaisseau", 20, 100);
         this.add(joueur);
         this.addMouseInteractiveObject(joueur);
         

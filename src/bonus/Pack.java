@@ -7,6 +7,8 @@ package bonus;
 
 import iut.Game;
 import iut.Objet;
+import java.util.ArrayList;
+import projetpoo.Joueur;
 
 /**
  *
@@ -14,8 +16,11 @@ import iut.Objet;
  */
 public class Pack extends BonusMalus{
 
-    public Pack(Game g, int x, int y) {
-        super(g, "pack", x, y);
+    private ArrayList<Missile> missiles;
+    
+    public Pack(Game g, String nom, int x, int y, Joueur j) {
+        super(g, nom, x, y, j);                        //nom = "pack"
+        missiles = new ArrayList();
     }
 
     @Override

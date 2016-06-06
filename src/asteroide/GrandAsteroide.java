@@ -6,15 +6,22 @@
 
 package asteroide;
 
+import iut.Game;
+import projetpoo.Jeu;
+
 /**
  *
  * @author cp071232
  */
 public class GrandAsteroide extends Asteroide {
 
+    public GrandAsteroide(Game g, String nom, int x, int y) {
+        super(g, nom, x, y);
+    }
+
     @Override
     protected void Split() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }

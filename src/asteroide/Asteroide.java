@@ -6,6 +6,7 @@
 
 package asteroide;
 
+import iut.Game;
 import projetpoo.Ennemi;
 
 /**
@@ -14,16 +15,22 @@ import projetpoo.Ennemi;
  */
 public abstract class Asteroide extends Ennemi{
 
+    public Asteroide(Game g, String nom, int x, int y) {
+        super(g, nom, x, y);
+    }
+
     @Override
     protected void specialMove(long dt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
     }
 
     @Override
     protected boolean isDestructible() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    return true;
     }
     
+    @Override
     protected void Detruit(){
         
     }

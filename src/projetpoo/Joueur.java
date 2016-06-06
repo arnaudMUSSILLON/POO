@@ -11,6 +11,7 @@ import iut.Objet;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 
 /**
@@ -18,14 +19,14 @@ import java.awt.event.MouseMotionListener;
  * @author cm391743
  */
 public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMotionListener{
-    private static int vie;
+    private static int vie =3;
     private double vitesse;
     private String nom =null;
     private boolean bloque;
+    private ArrayList<BonusMalus> bonus;
 
-    public Joueur(iut.Game jeu, int x, int y){
-        super(jeu,"vaisseau", x,y);
-        this.vie = 3;
+    public Joueur(iut.Game jeu, String nom, int x, int y){
+        super(jeu,nom, x,y);
         this.vitesse = 1;
         this.bloque = false;
   
@@ -63,11 +64,11 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     }
     
     public void ajouteBonus (BonusMalus b){
-        
+        bonus.add(b);
     }
     
     public void enleveBonus (BonusMalus b){
-        
+        bonus.remove(b);
     }
     
     public void debloque(){
@@ -116,8 +117,9 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-        //non utilisé ici
+    public void mouseMoved(MouseEvent e) {        
+            this.moveY(e.getY()-this.getMiddleY());
+        
     }
 
 
