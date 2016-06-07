@@ -14,9 +14,12 @@ import iut.Game;
  */
 public class JaugeBouclier extends Afficheurs {
 
-    public JaugeBouclier(Game g, String nom, double _x, double _y) {
-        super(g, nom, _x, _y);
+    public JaugeBouclier(Game g) {
+        super(g, "bouclier", g.width()-70, g.height()-70); 
     }
+    
+    @Override
     public void move(long dt){
+    // non utilisé ici
     }
 }

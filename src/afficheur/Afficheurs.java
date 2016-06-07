@@ -21,12 +21,12 @@ public abstract class Afficheurs extends iut.Objet{
     
     @Override
     public boolean collision(Objet objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
     
     @Override
     public void effect(Objet objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     @Override

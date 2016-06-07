@@ -7,6 +7,7 @@
 package afficheur;
 
 import iut.Game;
+import java.util.ArrayList;
 import projetpoo.Joueur;
 
 /**
@@ -15,10 +16,12 @@ import projetpoo.Joueur;
  */
 public class JaugeVie extends Afficheurs {
     private Joueur j;
+    private static ArrayList<JaugeVie> jauge = new ArrayList();
 
-    public JaugeVie(Game g, String nom, int _x, int _y, Joueur joueur) {
-        super(g, nom, _x, _y);
-        this.j = joueur;
+    public JaugeVie(Game g) {
+        super(g, "vaisseau", jauge.size()*100, 20);
+        jauge.add(this);
+        g.add(this);
     }
     
     @Override

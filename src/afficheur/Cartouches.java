@@ -21,7 +21,7 @@ public class Cartouches extends Afficheurs {
     private Game jeu;
     
     public Cartouches(Game g) {
-        super(g, "missile", cartouches.size()*10, 20);
+        super(g, "missile", cartouches.size()*100, g.height()-100);
         cartouches.add(this);
         g.add(this);
     }
@@ -29,9 +29,5 @@ public class Cartouches extends Afficheurs {
     @Override
     public void move(long dt){
         //inutile pour l'affichage
-    }
-   
-    public ArrayList<Cartouches> getCartouches(){
-        return cartouches;
     }
 }

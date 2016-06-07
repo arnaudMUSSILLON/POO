@@ -7,6 +7,7 @@
 package projetpoo;
 
 import afficheur.Cartouches;
+import afficheur.JaugeVie;
 import bonus.BonusMalus;
 import bonus.Missile;
 import iut.Objet;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
  */
 public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMotionListener{
     private static int vie =3;
+    private int missiles =2;
     private double vitesse;
     private String nom =null;
     private boolean bloque;
@@ -31,12 +33,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         super(jeu,nom, x,y);
         this.vitesse = 1;
         this.bloque = false;
-        for (int i=0; i<=3; i++){
+        for (int i=1; i<=3; i++){
             if(vie>=i){
-                Cartouches cartouche = new Cartouches(this.game());
-                //jeu.add(cartouche);
+                JaugeVie jaugevie = new JaugeVie(this.game());
             }
         }
+        Cartouches cartouche = new Cartouches(this.game());
     }
 
     
