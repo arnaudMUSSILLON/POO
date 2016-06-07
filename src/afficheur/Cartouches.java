@@ -21,7 +21,7 @@ public class Cartouches extends Afficheurs {
     private Game jeu;
     
     public Cartouches(Game g) {
-        super(g, "missile", cartouches.size()*100, g.height()-100);
+        super(g, "missileAffichage", cartouches.size()*100, g.height()-35);
         cartouches.add(this);
         g.add(this);
     }

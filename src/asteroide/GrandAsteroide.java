@@ -23,8 +23,8 @@ public class GrandAsteroide extends Asteroide {
     protected void Split() {
         
         this.Detruit();
-        AsteroideMoyen a2 = new AsteroideMoyen (game(), "asteroide3",this.getLeft(),this.getTop()+200);
-        AsteroideMoyen a3 = new AsteroideMoyen (game(), "asteroide3",this.getLeft(),this.getTop()-200);
+        AsteroideMoyen a2 = new AsteroideMoyen (game(), "asteroide2",this.getLeft(),this.getTop()+100);
+        AsteroideMoyen a3 = new AsteroideMoyen (game(), "asteroide2",this.getLeft(),this.getTop()-100);
         game().add(a2);
         game().add(a3);
         

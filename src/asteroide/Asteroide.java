@@ -38,6 +38,7 @@ public abstract class Asteroide extends Ennemi{
         game().remove(this);
     }
     
+    @Override
     public void effect(Objet o){
         if(o.isFriend()) 
         {

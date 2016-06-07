@@ -19,7 +19,7 @@ public class JaugeVie extends Afficheurs {
     private static ArrayList<JaugeVie> jauge = new ArrayList();
 
     public JaugeVie(Game g) {
-        super(g, "vaisseau", jauge.size()*100, 20);
+        super(g, "vaisseauAffichage", jauge.size()*100, 20);
         jauge.add(this);
         g.add(this);
     }

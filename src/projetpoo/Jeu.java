@@ -45,7 +45,7 @@ public class Jeu extends iut.Game{
     
     @Override
     public void createObjects(){
-        GrandAsteroide a1 = new GrandAsteroide (this , "asteroide2" , this.getWidth(), 200) ;       
+        GrandAsteroide a1 = new GrandAsteroide (this , "asteroide1" , this.getWidth(), 200) ;       
         this.add(a1);
         Joueur joueur = new Joueur(this,"vaisseau", 20, 100);
         this.add(joueur);
