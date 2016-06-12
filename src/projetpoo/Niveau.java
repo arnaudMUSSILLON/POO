@@ -15,18 +15,24 @@ import java.util.ArrayList;
  * @author cp071232
  */
 public class Niveau {
-    private ArrayList<Ennemi> ennemis;
-    private ArrayList<BonusMalus> bonus;
-    private int niveau = 0;
+    private ArrayList<Ennemi> ennemis = new ArrayList();
+    private ArrayList<BonusMalus> bonus = new ArrayList();
+    private ArrayList<Niveau> niveaux = new ArrayList();
+    private static int nbNiveau=0;
     
-    public void Niveau(int numero){
-        this.niveau = numero;
+    public Niveau(int numero){
+        niveaux.get(numero);
+        ++nbNiveau;
     }
     
     public Objet NouvelObjet(long time){
         Objet o = null;
         
         return o;
+    }
+    
+    public static int getNbNiveau(){
+        return nbNiveau;
     }
     
 }

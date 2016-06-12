@@ -14,42 +14,46 @@ import iut.Objet;
  * @author cp071232
  */
 public class Horloge extends Objet {
-
-    public Horloge(Game g, String nom, double _x, double _y) {
-        super(g, nom, _x, _y);
+    
+    private long heureDebut = 0;
+    private Niveau niveau;
+    
+    public Horloge(Game g, Niveau n) {
+        super(g, "horloge", 0, 0);
+        
     }
+    
 
     @Override
     public boolean collision(Objet objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public void effect(Objet objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //inutile ici
     }
 
     @Override
     public boolean isFriend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public boolean isEnnemy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public void move(long l) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(heureDebut>0)
+               heureDebut -= l;
+           else if(heureDebut<0)
+        heureDebut = 0;
     }
     
     public void ChangeNiveau(Niveau n){
-        
-    }
-    
-    public void Horloge(Game g,Niveau n){
-            
+        this.niveau = n;
     }
     
 }

@@ -64,11 +64,13 @@ public class Jeu extends iut.Game{
     }
     
     public boolean aGagne(){
-        return true;
+        return Niveau.getNbNiveau()>=10;
+
     }
     
     public boolean aPerdu(){
-        return Joueur.getVie()<=0;
+        System.out.println("perdu");
+        return !(Joueur.nbVie()<=0);
     }
 
 

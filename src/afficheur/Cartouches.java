@@ -25,7 +25,13 @@ public class Cartouches extends Afficheurs {
         cartouches.add(this);
         g.add(this);
     }
-       
+    
+    public static void avoirTire(){
+        Cartouches cartoucheActuelle = cartouches.get(cartouches.size()-1);
+        cartouches.remove(cartoucheActuelle);
+        cartoucheActuelle.game().remove(cartoucheActuelle);
+    }
+        
     @Override
     public void move(long dt){
         //inutile pour l'affichage

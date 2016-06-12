@@ -31,13 +31,13 @@ public abstract class Afficheurs extends iut.Objet{
     
     @Override
     public boolean isFriend(){
-        boolean res = false;
+        boolean res = true;
         return res;
     }
     
     @Override
     public boolean isEnnemy(){
-        boolean res=true;
+        boolean res=false;
         return res;
     }
     

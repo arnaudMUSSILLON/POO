@@ -26,7 +26,13 @@ public class JaugeVie extends Afficheurs {
     
     @Override
     public void move(long dt){
-        
+        //pas utile ici
+    }
+    
+    public static void perdreVie(){
+        JaugeVie vieActuelle = jauge.get(jauge.size()-1);
+        jauge.remove(vieActuelle);
+        vieActuelle.game().remove(vieActuelle);
     }
     
 }

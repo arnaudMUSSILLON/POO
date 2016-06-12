@@ -22,23 +22,21 @@ import java.util.ArrayList;
  * @author cm391743
  */
 public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMotionListener{
+    private Jeu jeu;
     private static int vie =3;
-    private int missiles =2;
-    private double vitesse;
+    private int missiles =5;
     private String nom =null;
-    private boolean bloque;
     private ArrayList<BonusMalus> bonus = new ArrayList();
+    private long delai =0;
 
     public Joueur(iut.Game jeu, String nom, int x, int y){
         super(jeu,nom, x,y);
-        this.vitesse = 1;
-        this.bloque = false;
-        for (int i=1; i<=3; i++){
-            if(vie>=i){
+        for (int i=1; i<=vie; i++){
                 JaugeVie jaugevie = new JaugeVie(this.game());
-            }
         }
-        Cartouches cartouche = new Cartouches(this.game());
+        for (int j =1; j<=missiles;j++){
+            Cartouches cartouche = new Cartouches(this.game());
+        }    
     }
 
     
@@ -53,7 +51,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     @Override
     public void effect(Objet o){
         if (o.isEnnemy()){
-            
+            if(delai==0){ 
+                vie -= 1;
+                System.out.println(vie);
+                JaugeVie.perdreVie();                     
+                delai = 100;
+            }
         }
     }
     
@@ -69,8 +72,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     
     @Override
     public void move (long dt){
-        
+        if(delai>0)
+            delai -= dt;
+        else if(delai<0)
+            delai = 0;
     }
+    
     
     public void ajouteBonus (BonusMalus b){
         bonus.add(b);
@@ -90,7 +97,7 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     
 
     
-    public static int getVie(){
+    public static int nbVie(){
         return vie;
     }
     
@@ -98,9 +105,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     
     @Override
     public void mouseClicked(MouseEvent e) {           
-        Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ,this) ;
-        this.game().add(m1);
-        
+        if (missiles >=1) {
+            Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ,this) ;
+            this.game().add(m1);
+            this.missiles -=1;
+            Cartouches.avoirTire();
+        }
     }
 
     @Override

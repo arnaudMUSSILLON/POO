@@ -21,7 +21,7 @@ public abstract class Ennemi extends ObjetTouchable{
 
     public Ennemi(Game g, String nom, int x, int y) {
         super(g, nom, x, y);
-        this.vitesseX=-0.10;
+        this.vitesseX=-0.20;
         this.vitesseY=0;
     }
     

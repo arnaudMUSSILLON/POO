@@ -17,7 +17,7 @@ public abstract class BonusMalus extends iut.ObjetTouchable {
     
     public BonusMalus(Game g, String nom, int x, int y, Joueur joueur) {
         super(g, nom, x, y);
-        j = joueur;
+        this.j = joueur;
     }
 
     @Override
