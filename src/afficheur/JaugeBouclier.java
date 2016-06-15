@@ -14,8 +14,15 @@ import iut.Game;
  */
 public class JaugeBouclier extends Afficheurs {
 
+    // Le joueur ne peut avoir qu'un seul bouclier
+    
     public JaugeBouclier(Game g) {
-        super(g, "bouclier", g.width()-70, g.height()-70); 
+        super(g, "bouclierAffichage", g.width()-70, g.height()-70); 
+        g.add(this);
+    }
+    
+    public void retireBouclier(Game g){
+        g.remove(this);
     }
     
     @Override

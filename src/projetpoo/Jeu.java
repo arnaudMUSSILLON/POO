@@ -7,6 +7,7 @@
 package projetpoo;
 
 import asteroide.GrandAsteroide;
+import bonus.Pack;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
@@ -44,7 +45,11 @@ public class Jeu extends iut.Game{
     }
     
     @Override
-    public void createObjects(){
+    public void createObjects(){    //initialisation du niveau
+        Pack pack = new Pack(this, "bonus",this.getWidth(),100);
+        this.add(pack);
+        Niveau niveau = new Niveau(1);
+        Horloge horloge = new Horloge(this, niveau);
         GrandAsteroide a1 = new GrandAsteroide (this , "asteroide1" , this.getWidth(), 200) ;       
         this.add(a1);
         Joueur joueur = new Joueur(this,"vaisseau", 20, 100);

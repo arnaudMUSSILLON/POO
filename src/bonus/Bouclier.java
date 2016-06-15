@@ -17,10 +17,11 @@ public class Bouclier extends BonusMalus{
     
     private int duree;
     private int energie;
+    private Joueur j;
 
-    public Bouclier(Game g,String nom, int x, int y,Joueur j) {
-        super(g, nom, x, y,j);                                //nom = "bouclier"
-        duree = 20;
+    public Bouclier(Game g,String nom, int x, int y) {
+        super(g, nom, x, y);                                //nom = "bouclier"
+        duree = 200;
         energie = 500;
     }
     
@@ -29,14 +30,17 @@ public class Bouclier extends BonusMalus{
         if (o.isEnnemy()){
             energie -= 300;
             if (energie <=0){
-                getJoueur().enleveBonus(this);
+                j.enleveBonus(this);
             }
         }
     }
 
     @Override
     public void move(long dt) {
-        
+        if(duree>0)
+            duree -= dt;
+        else if(duree<0)
+            duree = 0;
     }
     
 }

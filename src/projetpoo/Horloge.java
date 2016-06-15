@@ -36,7 +36,7 @@ public class Horloge extends Objet {
 
     @Override
     public boolean isFriend() {
-        return true;
+        return false;
     }
 
     @Override
@@ -46,11 +46,14 @@ public class Horloge extends Objet {
 
     @Override
     public void move(long l) {
-        if(heureDebut>0)
+        if(heureDebut>0){
                heureDebut -= l;
+               Niveau.nouvelObjet(heureDebut);
+        }
            else if(heureDebut<0)
         heureDebut = 0;
     }
+    
     
     public void ChangeNiveau(Niveau n){
         this.niveau = n;

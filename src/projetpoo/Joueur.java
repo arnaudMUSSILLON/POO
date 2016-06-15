@@ -7,8 +7,11 @@
 package projetpoo;
 
 import afficheur.Cartouches;
+import afficheur.JaugeBouclier;
 import afficheur.JaugeVie;
+import bonus.Bloqueur;
 import bonus.BonusMalus;
+import bonus.Bouclier;
 import bonus.Missile;
 import iut.Objet;
 import java.awt.event.MouseEvent;
@@ -25,9 +28,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     private Jeu jeu;
     private static int vie =3;
     private int missiles =5;
+    private boolean bloque=false;
     private String nom =null;
     private ArrayList<BonusMalus> bonus = new ArrayList();
     private long delai =0;
+    private Bouclier bouclier;
+    private boolean boolBouclier=false;
 
     public Joueur(iut.Game jeu, String nom, int x, int y){
         super(jeu,nom, x,y);
@@ -36,7 +42,13 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         }
         for (int j =1; j<=missiles;j++){
             Cartouches cartouche = new Cartouches(this.game());
-        }    
+        }
+        //bouclier = new Bouclier(this.game(),"vaisseau", this.getMiddleX()-50, this.getMiddleY()+20);
+        //this.game().add(bouclier);
+        //this.boolBouclier=true;
+        JaugeBouclier bouclierAffichage = new JaugeBouclier(this.game());
+        //Bloqueur bloqueur =new Bloqueur(this.game(),"missile", 0, 0);
+        //this.game().add(bloqueur);
     }
 
     
@@ -53,7 +65,6 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         if (o.isEnnemy()){
             if(delai==0){ 
                 vie -= 1;
-                System.out.println(vie);
                 JaugeVie.perdreVie();                     
                 delai = 100;
             }
@@ -88,15 +99,13 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     }
     
     public void debloque(){
-        
+        bloque = false;
     }
     
     public void bloque(){
-        
+        bloque = true;
     }
-    
-
-    
+       
     public static int nbVie(){
         return vie;
     }
@@ -106,7 +115,7 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     @Override
     public void mouseClicked(MouseEvent e) {           
         if (missiles >=1) {
-            Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ,this) ;
+            Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ) ;
             this.game().add(m1);
             this.missiles -=1;
             Cartouches.avoirTire();
@@ -140,9 +149,12 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
 
     @Override
     public void mouseMoved(MouseEvent e) {        
+        if(this.bloque==false){
             this.moveY(e.getY()-this.getMiddleY());
-        
+        }
+
     }
+    
 
 
 }

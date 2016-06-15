@@ -31,7 +31,7 @@ public abstract class Afficheurs extends iut.Objet{
     
     @Override
     public boolean isFriend(){
-        boolean res = true;
+        boolean res = false;
         return res;
     }
     

@@ -13,11 +13,9 @@ import projetpoo.Joueur;
  * @author Arno
  */
 public abstract class BonusMalus extends iut.ObjetTouchable {
-    private Joueur j;
     
-    public BonusMalus(Game g, String nom, int x, int y, Joueur joueur) {
+    public BonusMalus(Game g, String nom, int x, int y) {
         super(g, nom, x, y);
-        this.j = joueur;
     }
 
     @Override
@@ -30,7 +28,4 @@ public abstract class BonusMalus extends iut.ObjetTouchable {
         return true;
     }
     
-    public Joueur getJoueur(){
-        return j;
-    }
 }

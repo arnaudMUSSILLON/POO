@@ -7,7 +7,6 @@ package bonus;
 
 import iut.Game;
 import iut.Objet;
-import projetpoo.Joueur;
 
 /**
  *
@@ -16,8 +15,8 @@ import projetpoo.Joueur;
 public class Missile extends BonusMalus{
 
     private double vitesseX = 20;
-    public Missile(Game g, String nom, int x, int y, Joueur j) {
-        super(g, nom, x, y,j);                        // nom = "missile"
+    public Missile(Game g, String nom, int x, int y) {
+        super(g, nom, x, y);                        // nom = "missile"
     }
 
     @Override
