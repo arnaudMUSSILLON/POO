@@ -5,6 +5,7 @@
  */
 package bonus;
 
+import afficheur.Cartouches;
 import iut.Game;
 import iut.Objet;
 import java.util.ArrayList;
@@ -16,13 +17,11 @@ import projetpoo.Joueur;
  */
 public class Pack extends BonusMalus{
 
-    private ArrayList<Missile> missiles;
     private Joueur j;
     private double vitesseX = -2;
     
     public Pack(Game g, String nom, int x, int y) {
         super(g, nom, x, y);                        //nom = "pack"
-        missiles = new ArrayList();
     }
 
     @Override
@@ -30,14 +29,12 @@ public class Pack extends BonusMalus{
         if (objet.isFriend()){
             int nbMissileAjout = (int) (Math.random() * 2+1);
             for (int i=0; i<nbMissileAjout; i++){
-                Missile missileAjout = new Missile(this.game(), "missile",j.getMiddleX(),j.getMiddleY());
-                missiles.add(missileAjout);
+                Cartouches missileAjout = new Cartouches(this.game());
+                j.ajouterMissile(nbMissileAjout);
+                this.game().remove(this);
             }
+
         }
-    }
-    
-    public int getNbMissile(){
-        return missiles.size();
     }
 
     @Override

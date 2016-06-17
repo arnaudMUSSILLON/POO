@@ -9,6 +9,9 @@ package projetpoo;
 import iut.Game;
 import iut.Objet;
 import iut.ObjetTouchable;
+import java.applet.Applet;
+import java.applet.AudioClip;
+import java.net.URL;
 
 /**
  *
@@ -16,12 +19,14 @@ import iut.ObjetTouchable;
  */
 public abstract class Ennemi extends ObjetTouchable{
 
-    double vitesseX;
-    double vitesseY;
+    protected double vitesseX;
+    protected double vitesseY;
+    private URL u1;
+    private AudioClip a1;
 
     public Ennemi(Game g, String nom, int x, int y) {
         super(g, nom, x, y);
-        this.vitesseX=-0.20;
+        this.vitesseX=-0.1;
         this.vitesseY=0;
     }
     
@@ -31,6 +36,12 @@ public abstract class Ennemi extends ObjetTouchable{
         if (o.isFriend())
         {
             this.Detruit();
+        }
+        if ((o.isFriend())&&(isDestructible() == true)){
+            game().remove(this);
+            u1 = this.getClass().getClassLoader().getResource("vaisseauEnnemiDestruction.wav");
+            a1 = Applet.newAudioClip(u1);
+            a1.play();
         }
     }
     
@@ -48,6 +59,9 @@ public abstract class Ennemi extends ObjetTouchable{
     @Override
     public void move(long dt){
         move(dt*vitesseX,dt*vitesseY);
+        if (this.getLeft() < -500){
+            game().remove(this);
+        }
                 
     }
     

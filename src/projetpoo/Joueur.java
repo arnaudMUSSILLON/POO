@@ -18,6 +18,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.applet.*;
+import java.awt.*;
+import java.net.URL;
 
 
 /**
@@ -27,13 +30,15 @@ import java.util.ArrayList;
 public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMotionListener{
     private Jeu jeu;
     private static int vie =3;
-    private int missiles =5;
-    private boolean bloque=false;
+    private static int missiles =5;
+    private long duree=0;
+    private static boolean bloque=false;
     private String nom =null;
     private ArrayList<BonusMalus> bonus = new ArrayList();
     private long delai =0;
-    private Bouclier bouclier;
-    private boolean boolBouclier=false;
+    private static boolean boolBouclier=false;
+    private URL u1;
+    private AudioClip a1;
 
     public Joueur(iut.Game jeu, String nom, int x, int y){
         super(jeu,nom, x,y);
@@ -43,14 +48,11 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         for (int j =1; j<=missiles;j++){
             Cartouches cartouche = new Cartouches(this.game());
         }
-        //bouclier = new Bouclier(this.game(),"vaisseau", this.getMiddleX()-50, this.getMiddleY()+20);
-        //this.game().add(bouclier);
-        //this.boolBouclier=true;
-        JaugeBouclier bouclierAffichage = new JaugeBouclier(this.game());
-        //Bloqueur bloqueur =new Bloqueur(this.game(),"missile", 0, 0);
-        //this.game().add(bloqueur);
     }
 
+    public static void setBoolBouclier(boolean bool){
+        boolBouclier=bool;
+    }
     
     public String setNom(String nom){
         return this.nom = nom;
@@ -63,10 +65,16 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     @Override
     public void effect(Objet o){
         if (o.isEnnemy()){
-            if(delai==0){ 
-                vie -= 1;
-                JaugeVie.perdreVie();                     
-                delai = 100;
+            if(delai==0){
+                if(boolBouclier==false){
+                    vie -= 1;
+                    JaugeVie.perdreVie();                     
+                    delai = 100;
+                }
+                else {
+                    boolBouclier = false;
+                    JaugeBouclier.retireBouclier(this.game());
+                }
             }
         }
     }
@@ -98,11 +106,11 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         bonus.remove(b);
     }
     
-    public void debloque(){
+    public static void debloque(){
         bloque = false;
     }
     
-    public void bloque(){
+    public static void bloque(){
         bloque = true;
     }
        
@@ -110,11 +118,16 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
         return vie;
     }
     
-    
+    public static void ajouterMissile(int ajout){
+        missiles += ajout;
+    }
     
     @Override
     public void mouseClicked(MouseEvent e) {           
         if (missiles >=1) {
+            u1 = this.getClass().getClassLoader().getResource("tir.wav");
+            a1 = Applet.newAudioClip(u1);
+            a1.play();
             Missile m1 = new Missile (this.game() , "missile" ,this.getMiddleX(),this.getMiddleY() ) ;
             this.game().add(m1);
             this.missiles -=1;
@@ -151,8 +164,13 @@ public class Joueur extends iut.ObjetTouchable implements MouseListener, MouseMo
     public void mouseMoved(MouseEvent e) {        
         if(this.bloque==false){
             this.moveY(e.getY()-this.getMiddleY());
+            
         }
-
+        duree = System.currentTimeMillis();
+        long temp = System.currentTimeMillis()-duree;
+        if(temp>=duree+2){
+            bloque = false;
+        }
     }
     
 

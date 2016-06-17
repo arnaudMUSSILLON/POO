@@ -8,6 +8,8 @@ package projetpoo;
 
 import iut.Game;
 import iut.Objet;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  *
@@ -15,12 +17,11 @@ import iut.Objet;
  */
 public class Horloge extends Objet {
     
-    private long heureDebut = 0;
+    private long heureDebut = System.currentTimeMillis();
     private Niveau niveau;
     
     public Horloge(Game g, Niveau n) {
         super(g, "horloge", 0, 0);
-        
     }
     
 
@@ -46,12 +47,12 @@ public class Horloge extends Objet {
 
     @Override
     public void move(long l) {
-        if(heureDebut>0){
-               heureDebut -= l;
+        if(System.currentTimeMillis()!=heureDebut){
+               //heureDebut -= l;
                Niveau.nouvelObjet(heureDebut);
         }
-           else if(heureDebut<0)
-        heureDebut = 0;
+           //else if(heureDebut<0)
+        //heureDebut = 0;
     }
     
     

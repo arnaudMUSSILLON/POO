@@ -15,25 +15,23 @@ import projetpoo.Joueur;
  */
 public class Bloqueur extends BonusMalus{
 
-    private int duree=2;
     private Joueur j;
+    private double vitesseX = -2;
     
     public Bloqueur(Game g, String nom, int x, int y) {
         super(g, nom, x, y);
-        if(duree>0){
-            j.bloque();
-        } else if(duree<=0){
-            j.debloque();
-        }
     }
     
     @Override
     public void effect(Objet objet) {
-        //inutile ici
+        if(objet.isFriend()){
+            j.bloque();
+            this.game().remove(this);
+        }
     }            
     @Override
     public void move(long l) {
-        //inutile ici
+        this.moveX(this.vitesseX);
     }
     
 }

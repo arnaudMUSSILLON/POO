@@ -6,11 +6,19 @@
 
 package vaisseau;
 
+import iut.Game;
+import projetpoo.Ennemi;
+
 /**
  *
  * @author vm497823
  */
-public class Vaisseau {
+public abstract class Vaisseau extends Ennemi {
 
     protected boolean indestrucible;
+
+    public Vaisseau(Game g, String nom, int x, int y) {
+        super(g, nom, x, y);
+    }
+    
 }

@@ -7,6 +7,7 @@
 package afficheur;
 
 import iut.Game;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,14 +16,18 @@ import iut.Game;
 public class JaugeBouclier extends Afficheurs {
 
     // Le joueur ne peut avoir qu'un seul bouclier
+    private static ArrayList<JaugeBouclier> jauge = new ArrayList();
     
     public JaugeBouclier(Game g) {
         super(g, "bouclierAffichage", g.width()-70, g.height()-70); 
+        jauge.add(this);
         g.add(this);
     }
     
-    public void retireBouclier(Game g){
-        g.remove(this);
+    public static void retireBouclier(Game g){
+        JaugeBouclier bouclierActuelle = jauge.get(jauge.size()-1);
+        jauge.remove(bouclierActuelle);
+        bouclierActuelle.game().remove(bouclierActuelle);
     }
     
     @Override

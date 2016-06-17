@@ -7,6 +7,8 @@
 package projetpoo;
 
 import asteroide.GrandAsteroide;
+import bonus.Bloqueur;
+import bonus.Bouclier;
 import bonus.Pack;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -16,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import vaisseau.Alien1;
+import vaisseau.Alien2;
 
 
 
@@ -46,10 +50,17 @@ public class Jeu extends iut.Game{
     
     @Override
     public void createObjects(){    //initialisation du niveau
-        Pack pack = new Pack(this, "bonus",this.getWidth(),100);
-        this.add(pack);
+        Alien1 alien = new Alien1(this,"vaisseauEnnemi", this.getWidth(),200);
+        this.add(alien);
+        Alien2 alien2 = new Alien2(this,"vaisseauEnnemi", this.getWidth(),400);
+        this.add(alien);
+        //Bouclier bouclier = new Bouclier(this,"bonus", this.getWidth()-200, 100);
+        //this.add(bouclier);
+        //Bloqueur bloqueur =new Bloqueur(this,"bonus", this.getWidth(),100);
+        //this.add(bloqueur);
+        //Pack pack = new Pack(this, "bonus",this.getWidth(),100);
+        //this.add(pack);
         Niveau niveau = new Niveau(1);
-        Horloge horloge = new Horloge(this, niveau);
         GrandAsteroide a1 = new GrandAsteroide (this , "asteroide1" , this.getWidth(), 200) ;       
         this.add(a1);
         Joueur joueur = new Joueur(this,"vaisseau", 20, 100);
